@@ -1,0 +1,9 @@
+html {
+    width: 100%;
+}
+
+p {
+    background-color: aquamarine;
+    font-size: 10rem;
+    font-family: sans-serif;
+}
