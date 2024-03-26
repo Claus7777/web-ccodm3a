@@ -32,7 +32,7 @@ function Formulario(){
     inputSubmit.setAttribute('id', 'loginButton');
     inputSubmit.setAttribute('type', 'submit');
     inputSubmit.setAttribute('value', 'Entrar');
-    inputSubmit.addEventListener('click', EfetuarLogin());
+    inputSubmit.addEventListener('click', EfetuarLogin);
 
     form.append(inputEmail);
     form.append(inputSenha);
@@ -41,8 +41,26 @@ function Formulario(){
 }
 
 function EfetuarLogin(event){
-    console.log(event);
-    console.log("lol");
+    event.preventDefault();
+
+    const inputEmail = document.querySelector('input[type="email"]');
+    if (!inputEmail.value){
+        const error = document.createElement('p');
+        error.innerText = 'Email é obrigatório';
+        inputEmail.parentElement.append(error);
+    }
+
+    const inputSenha = document.querySelector('input[type="password"]');
+    if (!inputSenha.value){
+        const error = document.createElement('p');
+        error.innerText = 'Senha é obrigatória';
+        inputEmail.parentElement.append(error);
+    }
+
+    fetch.post('http://localhost/users/login', {
+        method: 'POST',
+        body: {email: inputEmail.value, senha: inputSenha.value}
+    });
 }
 
 function Principal(){
