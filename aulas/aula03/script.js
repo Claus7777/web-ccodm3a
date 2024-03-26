@@ -29,13 +29,20 @@ function Formulario(){
     inputSenha.setAttribute('required', true);
 
     const inputSubmit = document.createElement('input');
+    inputSubmit.setAttribute('id', 'loginButton');
     inputSubmit.setAttribute('type', 'submit');
     inputSubmit.setAttribute('value', 'Entrar');
+    inputSubmit.addEventListener('click', EfetuarLogin());
 
     form.append(inputEmail);
     form.append(inputSenha);
     form.append(inputSubmit);
     return form;
+}
+
+function EfetuarLogin(event){
+    console.log(event);
+    console.log("lol");
 }
 
 function Principal(){
