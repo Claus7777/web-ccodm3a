@@ -68,6 +68,7 @@ input {
     line-height: 1.25;
     padding: 0.625rem;
     border-bottom: 8px;
+    height: 5%;
 }
 
 input[type="submit"] {
