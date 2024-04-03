@@ -9,12 +9,11 @@ loja.addEventListener('click', barreiraLoja);
 
 var menu_nav = document.getElementById("menu_nav");
 
+var lista_produtos = document.getElementById("lista-prod");
+
 
 function barreiraLoja(event){
-    //remove mensagens de erros velhas e o formulário de login
-    if(menu_nav.childElementCount >= 4){
-        menu_nav.removeChild(menu_nav.lastElementChild);
-    }
+    limpaTela();
 
     if (isLogado == false){
         const error = document.createElement('p');
@@ -25,10 +24,7 @@ function barreiraLoja(event){
 }
 
 function menuLogin(event){
-    if(menu_nav.childElementCount >= 4){
-        menu_nav.removeChild(menu_nav.lastElementChild);
-    }
-
+    limpaTela();
 
     //criando formulário de login caso o usuário não esteja logado
     if(isLogado == false){
@@ -95,32 +91,44 @@ function efetuarLogin(event){
 }
 
 function mostrarItems(){
-    fetch ('products.json')
-        .then(response => {
-            console.log(response);
-        })
-        .then(data =>{
-            for (let key in data){
-                if (data.hasOwnProperty(key)){
-                    const item = data[key];
-
-                    const nome = document.createElement("h3");
-                    nome.innerHTML = item.name;
-
-                    const foto = document.createElement("img");
-                    foto.src = 'img/${item.img}';
-
-                    const div = document.createElement("div");
-                    div.classList.add('item');
-
-                    
-                    div.appendChild(nome);
-                    div.appendChild(foto);
-                    root.appendChild(div);
-                }
-            }
-        })
-
-        .catch(error => console.error('Fetch não funcionou. Erro: ', error));
+    fetch ('products.json', {
+        method: 'GET'
     }
+    )
+    
+    .then(response => response.json())
+    .then(response =>{
 
+        for (i in response){
+            const item = response[i];
+
+            const nome = document.createElement("h3");
+            nome.innerHTML = item.name;
+
+            const foto = document.createElement("img");
+            foto.src = item.img;
+
+            const li = document.createElement("li");
+            const comprar = document.createElement("button");
+            comprar.innerHTML = "Comprar";
+
+
+            li.appendChild(nome);
+            li.appendChild(foto);
+            li.appendChild(comprar);
+            lista_produtos.appendChild(li);
+        }
+    })
+}
+
+function limpaTela(){
+    //remove mensagens de erros velhas, formulário de login e a lista de produtos se ela estiver aparecendo
+    if(lista_produtos.childElementCount > 0){
+        do {
+            lista_produtos.removeChild(lista_produtos.lastElementChild);
+        } while (lista_produtos.childElementCount >= 1);
+    }
+    if(menu_nav.childElementCount >= 4){
+        menu_nav.removeChild(menu_nav.lastElementChild);
+    }
+}

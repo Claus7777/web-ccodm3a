@@ -30,3 +30,51 @@ a {
     font-family: consolas;
     justify-content: center;
 }
+
+.objeto-produto {
+    display: flex;
+    border: 4px solid black;
+    width: 500px;
+    margin: 50px auto;
+}
+
+img {
+    display: flex;
+    max-width: 90%;
+    height: auto;
+    justify-items: center;
+    margin: auto;
+
+}
+
+ul{
+    display: flex;
+    min-width: 300px;
+    justify-content: space-evenly;
+}
+
+li {
+    display: flex;
+    flex-direction: column;
+    border-radius: 25px;
+    font-family: consolas;
+    background-color: aliceblue;
+    width: 200px;
+    height: auto;
+    margin: 0 10px;
+    list-style: none;
+    align-items: center;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: rgb(119, 192, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+button:hover {
+    background-color: #45a049;
+}
