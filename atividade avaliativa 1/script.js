@@ -81,6 +81,9 @@ function efetuarLogin(event){
     }
 
     isLogado = true;
+    const mensagemAcerto = document.createElement('p');
+    mensagemAcerto.innerHTML = "Logado com sucesso! Clique na loja para ver os produtos.";
+    menu_nav.appendChild(mensagemAcerto);
 
     fetch.post('http://localhost/users/login', {
         method: 'POST',
@@ -91,6 +94,7 @@ function efetuarLogin(event){
 }
 
 function mostrarItems(){
+    limpaTela();
     fetch ('products.json', {
         method: 'GET'
     }

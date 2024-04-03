@@ -5,11 +5,10 @@ html {
 
 #cabecalho {
     display: flex;
-    position: absolute;
     width: 100%;
     height: 100%;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
 }
 
 #background-nav {
@@ -29,13 +28,6 @@ a {
     display: flex;
     font-family: consolas;
     justify-content: center;
-}
-
-.objeto-produto {
-    display: flex;
-    border: 4px solid black;
-    width: 500px;
-    margin: 50px auto;
 }
 
 img {
@@ -77,4 +69,5 @@ button {
 
 button:hover {
     background-color: #45a049;
+    cursor: pointer;
 }
