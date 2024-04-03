@@ -21,7 +21,7 @@ function barreiraLoja(event){
         error.id = "error"
         error.innerText = 'O conteúdo da loja só está disponível para usuários logados.';
         menu_nav.appendChild(error);
-    }
+    } else mostrarItems();
 }
 
 function menuLogin(event){
@@ -73,6 +73,7 @@ function efetuarLogin(event){
         const error = document.createElement('p');
         error.innerText = 'Email é obrigatório';
         inputEmail.parentElement.append(error);
+        return;
     }
 
     const inputSenha = document.querySelector('input[type="password"]');
@@ -80,11 +81,46 @@ function efetuarLogin(event){
         const error = document.createElement('p');
         error.innerText = 'Senha é obrigatória';
         inputEmail.parentElement.append(error);
+        return;
     }
+
+    isLogado = true;
 
     fetch.post('http://localhost/users/login', {
         method: 'POST',
         body: {email: inputEmail.value, senha: inputSenha.value}
     });
+
+
 }
+
+function mostrarItems(){
+    fetch ('products.json')
+        .then(response => {
+            console.log(response);
+        })
+        .then(data =>{
+            for (let key in data){
+                if (data.hasOwnProperty(key)){
+                    const item = data[key];
+
+                    const nome = document.createElement("h3");
+                    nome.innerHTML = item.name;
+
+                    const foto = document.createElement("img");
+                    foto.src = 'img/${item.img}';
+
+                    const div = document.createElement("div");
+                    div.classList.add('item');
+
+                    
+                    div.appendChild(nome);
+                    div.appendChild(foto);
+                    root.appendChild(div);
+                }
+            }
+        })
+
+        .catch(error => console.error('Fetch não funcionou. Erro: ', error));
+    }
 

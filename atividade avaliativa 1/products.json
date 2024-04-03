@@ -1,0 +1,20 @@
+{
+    "playstation":
+    {
+        "id": 1,
+        "name": "Playstation",
+        "img": "ps1.webp"
+    },
+    "nintendo":
+    {
+        "id": 2,
+        "name": "Nintendo 64",
+        "img": "ps1.webp"
+    },
+    "sega":
+    {
+        "id": 3,
+        "name": "Sega Saturn",
+        "img": "saturn.web"
+    }
+}
