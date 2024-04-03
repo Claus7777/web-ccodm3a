@@ -1,14 +1,17 @@
 [
     {
         "name": "Playstation 1",
+        "preco": "R$200",
         "img": "img/ps1.webp"
     },
     {
         "name": "Nintendo 64",
+        "preco": "R$300",
         "img": "img/n64.webp"
     },
     {
         "name": "Sega Saturn",
+        "preco": "R$150",
         "img": "img/saturn.webp"
     }
 ]

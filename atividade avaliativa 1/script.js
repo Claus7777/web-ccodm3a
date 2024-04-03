@@ -112,6 +112,9 @@ function mostrarItems(){
             const foto = document.createElement("img");
             foto.src = item.img;
 
+            const preco = document.createElement("p");
+            preco.innerHTML = item.preco;
+
             const li = document.createElement("li");
             const comprar = document.createElement("button");
             comprar.innerHTML = "Comprar";
@@ -119,6 +122,7 @@ function mostrarItems(){
 
             li.appendChild(nome);
             li.appendChild(foto);
+            li.appendChild(preco);
             li.appendChild(comprar);
             lista_produtos.appendChild(li);
         }
